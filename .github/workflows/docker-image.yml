@@ -28,10 +28,30 @@ jobs:
         
     - name: Extract projectName and write to file.json
       run: |
-        projectName=$(jq -r '.projectName' event_payload.json)
+        # Check if event_payload.json exists
+        if [ ! -f event_payload.json ]; then
+          echo "Error: event_payload.json file not found!"
+          exit 1
+        fi
+    
+        # Extract projectName from JSON
+        projectName=$(jq -r '.projectName // empty' event_payload.json)
+    
+        # Validate extracted value
+        if [[ -z "$projectName" ]]; then
+          echo "Error: projectName is empty or not found in JSON"
+          exit 1
+        fi
+    
+        # Log extracted value
         echo "Extracted projectName: $projectName"
+    
+        # Write projectName to file.json
         echo "$projectName" > file.json
+    
+        # Export projectName as an environment variable
         echo "PROJECT_PAYLOAD=$projectName" >> $GITHUB_ENV
+
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
