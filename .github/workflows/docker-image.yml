@@ -35,7 +35,7 @@ jobs:
         fi
     
         # Extract projectName from JSON
-        projectName=$(jq -r '.client_payload.data.projectName' event_payload.json)
+        projectName=$(jq -r '.projectName' event_payload.json)
     
         # Validate extracted value
         if [[ -z "$projectName" ]]; then
