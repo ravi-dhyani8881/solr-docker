@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: royal
+        fetch-depth: 0  # Fe
 
 
     - name: Log event payload to a file
