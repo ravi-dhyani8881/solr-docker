@@ -74,6 +74,15 @@ jobs:
         echo "📁 Listing all files and folders in current directory:"
         ls -la
         
+    - name: Switch to the branch and change directory
+      run: |
+        echo "🔄 Switching to branch: ${{ env.PROJECT_PAYLOAD }}"
+        git fetch origin
+        git checkout ${{ env.PROJECT_PAYLOAD }}
+
+        echo "📂 Changing into directory: ${{ env.SUB_ORG_PAYLOAD }}"
+        cd ${{ env.SUB_ORG_PAYLOAD }}
+        
     - name: Build Docker image
       run: |
         echo "Building Docker image in directory: ${{ env.SUB_ORG_PAYLOAD }}"
