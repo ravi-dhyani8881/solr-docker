@@ -63,6 +63,17 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Print Current Directory and Git Status
+      run: |
+        echo "📂 Current working directory:"
+        pwd
+
+        echo "📜 Git status:"
+        git status
+
+        echo "📁 Listing all files and folders in current directory:"
+        ls -la
+        
     - name: Build Docker image
       run: |
         echo "Building Docker image in directory: ${{ env.SUB_ORG_PAYLOAD }}"
