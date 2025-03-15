@@ -36,6 +36,7 @@ jobs:
     
         # Extract projectName from JSON
         projectName=$(jq -r '.projectName' event_payload.json)
+        subOrganizationID=$(jq -r '.subOrganizationID' event_payload.json)
     
         # Validate extracted value
         if [[ -z "$projectName" ]]; then
@@ -45,12 +46,15 @@ jobs:
     
         # Log extracted value
         echo "Extracted projectName: $projectName"
-    
+        echo "Extracted subOrganizationID: $subOrganizationID"
+        
         # Write projectName to file.json
         echo "$projectName" > file.json
     
         # Export projectName as an environment variable
         echo "PROJECT_PAYLOAD=$projectName" >> $GITHUB_ENV
+        
+        echo "SUB_ORG_PAYLOAD=$subOrganizationID" >> $GITHUB_ENV
 
 
     - name: Log in to Docker Hub
@@ -61,8 +65,8 @@ jobs:
 
     - name: Build Docker image
       run: |
-        echo "Building Docker image in directory: ${{ env.PROJECT_PAYLOAD }}"
-        cd ${{ env.PROJECT_PAYLOAD }}
+        echo "Building Docker image in directory: ${{ env.SUB_ORG_PAYLOAD }}"
+        cd ${{ env.SUB_ORG_PAYLOAD }}
         docker build -t ravi8881/solr-compile-code-app-image:latest .
 
     - name: List Docker images for debugging
