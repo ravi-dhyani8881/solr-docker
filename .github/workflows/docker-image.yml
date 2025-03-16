@@ -86,20 +86,27 @@ jobs:
         echo "🔄 Switching to branch: ${{ env.PROJECT_PAYLOAD }}"
         git fetch origin
         git checkout ${{ env.PROJECT_PAYLOAD }}
-
-        echo "📂 Changing into directory: ${{ env.SUB_ORG_PAYLOAD }}"
-        cd ${{ env.SUB_ORG_PAYLOAD }}
-
-        echo "📂 Changing into directory: ${{ env.ENV_ID }}"
-        cd ${{ env.ENV_ID }}
-
-        echo "📂 Changing into directory: ${{ env.GRAPH_ID }}"
-        cd ${{ env.GRAPH_ID }}
+    
+        # Change to the nested folder structure
+        WORKING_DIR="${{ env.SUB_ORG_PAYLOAD }}/${{ env.ENV_ID }}/${{ env.GRAPH_ID }}"
         
+        echo "📂 Changing into directory: $WORKING_DIR"
+    
+        if [ -d "$WORKING_DIR" ]; then
+          cd "$WORKING_DIR"
+          echo "✅ Successfully changed directory to: $(pwd)"
+        else
+          echo "❌ Directory $WORKING_DIR does not exist!"
+          exit 1
+        fi
+    
+        # Store the working directory in a GitHub environment variable for the next step
+        echo "WORKING_DIR=$WORKING_DIR" >> $GITHUB_ENV
+            
     - name: Build Docker image
       run: |
-        echo "Building Docker image in directory: ${{ env.SUB_ORG_PAYLOAD }}"
-        cd ${{ env.SUB_ORG_PAYLOAD }}
+        echo "Building Docker image in directory: $WORKING_DIR"
+        cd "$WORKING_DIR"
         docker build -t ravi8881/solr-compile-code-app-image:latest .
 
     - name: List Docker images for debugging
