@@ -37,6 +37,10 @@ jobs:
         # Extract projectName from JSON
         projectName=$(jq -r '.organizationID' event_payload.json)
         subOrganizationID=$(jq -r '.subOrganizationID' event_payload.json)
+        enviromentID=$(jq -r '.enviromentID' event_payload.json)
+        graphID=$(jq -r '.graphID' event_payload.json)
+        version=$(jq -r '.version' event_payload.json)
+        
     
         # Validate extracted value
         if [[ -z "$projectName" ]]; then
@@ -53,8 +57,11 @@ jobs:
     
         # Export projectName as an environment variable
         echo "PROJECT_PAYLOAD=$projectName" >> $GITHUB_ENV
-        
         echo "SUB_ORG_PAYLOAD=$subOrganizationID" >> $GITHUB_ENV
+        echo "ENV_ID=$enviromentID" >> $GITHUB_ENV
+        echo "GRAPH_ID=$graphID" >> $GITHUB_ENV
+        echo "VERSION=$version" >> $GITHUB_ENV
+        
 
 
     - name: Log in to Docker Hub
@@ -82,6 +89,12 @@ jobs:
 
         echo "📂 Changing into directory: ${{ env.SUB_ORG_PAYLOAD }}"
         cd ${{ env.SUB_ORG_PAYLOAD }}
+
+        echo "📂 Changing into directory: ${{ env.ENV_ID }}"
+        cd ${{ env.ENV_ID }}
+
+        echo "📂 Changing into directory: ${{ env.GRAPH_ID }}"
+        cd ${{ env.GRAPH_ID }}
         
     - name: Build Docker image
       run: |
