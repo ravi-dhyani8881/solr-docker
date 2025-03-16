@@ -103,15 +103,74 @@ jobs:
         # Store the working directory in a GitHub environment variable for the next step
         echo "WORKING_DIR=$WORKING_DIR" >> $GITHUB_ENV
             
-    - name: Build Docker image
-      run: |
-        echo "Building Docker image in directory: $WORKING_DIR"
-        cd "$WORKING_DIR"
-        docker build -t ravi8881/solr-compile-code-app-image:latest .
+- name: Extract metadata for Docker image name
+  run: |
+    # Extract values from JSON
+    projectName=$(jq -r '.organizationID' event_payload.json)
+    subOrganizationID=$(jq -r '.subOrganizationID' event_payload.json)
+    enviromentID=$(jq -r '.enviromentID' event_payload.json)
+    graphID=$(jq -r '.graphID' event_payload.json)
+    version=$(jq -r '.version' event_payload.json)
 
-    - name: List Docker images for debugging
-      run: docker images
+    # Convert values to lowercase & sanitize (optional)
+    image_name="$(echo ${projectName}-${subOrganizationID}-${enviromentID}-${graphID} | tr '[:upper:]' '[:lower:]' | tr -d ' ' | tr '/' '-')"
+    
+    # Define full image name with version tag
+    full_image_name="ravi8881/${image_name}:${version}"
 
-    - name: Push Docker image
-      run: docker push ravi8881/solr-compile-code-app-image:latest
+    # Log output
+    echo "🚀 Generated Docker Image Name: $full_image_name"
+
+    # Export to GitHub environment variables
+    echo "DOCKER_IMAGE_NAME=$full_image_name" >> $GITHUB_ENV
+
+- name: Build Docker image
+  run: |
+    echo "Building Docker image: $DOCKER_IMAGE_NAME"
+    cd ${{ env.SUB_ORG_PAYLOAD }}
+    docker build -t $DOCKER_IMAGE_NAME .
+
+- name: List Docker images for debugging
+  run: docker images
+
+- name: Push Docker image
+  run: |
+    echo "🚀 Pushing Docker image: $DOCKER_IMAGE_NAME"
+    docker push $DOCKER_IMAGE_NAME
+    
+- name: Extract metadata for Docker image name
+  run: |
+    # Extract values from JSON
+    projectName=$(jq -r '.organizationID' event_payload.json)
+    subOrganizationID=$(jq -r '.subOrganizationID' event_payload.json)
+    enviromentID=$(jq -r '.enviromentID' event_payload.json)
+    graphID=$(jq -r '.graphID' event_payload.json)
+    version=$(jq -r '.version' event_payload.json)
+
+    # Convert values to lowercase & sanitize (optional)
+    image_name="$(echo ${projectName}-${subOrganizationID}-${enviromentID}-${graphID} | tr '[:upper:]' '[:lower:]' | tr -d ' ' | tr '/' '-')"
+    
+    # Define full image name with version tag
+    full_image_name="ravi8881/${image_name}:${version}"
+
+    # Log output
+    echo "🚀 Generated Docker Image Name: $full_image_name"
+
+    # Export to GitHub environment variables
+    echo "DOCKER_IMAGE_NAME=$full_image_name" >> $GITHUB_ENV
+
+- name: Build Docker image
+  run: |
+    echo "Building Docker image: $DOCKER_IMAGE_NAME"
+    cd ${{ env.SUB_ORG_PAYLOAD }}
+    docker build -t $DOCKER_IMAGE_NAME .
+
+- name: List Docker images for debugging
+  run: docker images
+
+- name: Push Docker image
+  run: |
+    echo "🚀 Pushing Docker image: $DOCKER_IMAGE_NAME"
+    docker push $DOCKER_IMAGE_NAME
+
 
