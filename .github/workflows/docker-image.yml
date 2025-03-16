@@ -35,8 +35,8 @@ jobs:
         fi
     
         # Extract projectName from JSON
-        projectName=$(jq -r '.organizationID' event_payload.json)
-        subOrganizationID=$(jq -r '.subOrganizationID' event_payload.json)
+        projectName=$(jq -r '.data.organizationID' event_payload.json)
+        subOrganizationID=$(jq -r '.data.subOrganizationID' event_payload.json)
     
         # Validate extracted value
         if [[ -z "$projectName" ]]; then
