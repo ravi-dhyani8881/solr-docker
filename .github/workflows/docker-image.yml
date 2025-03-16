@@ -128,7 +128,7 @@ jobs:
     - name: Build Docker image
       run: |
         echo "Building Docker image: $DOCKER_IMAGE_NAME"
-        cd ${{ env.SUB_ORG_PAYLOAD }}
+        cd "$WORKING_DIR"
         docker build -t $DOCKER_IMAGE_NAME .
     
     - name: List Docker images for debugging
