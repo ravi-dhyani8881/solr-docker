@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: solr-service-
+  namespace: 85c8a741-63c7-438b-8abe-9fe23efa41e5
+  labels:
+    app: solr-
+spec:
+  selector:
+    app: solr-
+  ports:
+    - port: 80
+      targetPort: 8983
+      protocol: TCP
+  type: ClusterIP
