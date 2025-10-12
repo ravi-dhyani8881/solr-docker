@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: bb88b8bf-63b3-452e-ad73-c3b849f54995
+spec:
+  capacity:
+    storage: 5Gi # The size of the volume
+  accessModes:
+    - ReadWriteOnce # This volume can be mounted as read-write by a single node
+  hostPath:
+    path: "/Users/ravi.dhyani/Desktop/mine/git/pvc" # This is the path on the host node
