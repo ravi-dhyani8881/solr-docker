@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: solr-service-3ff6687b-fc8c-4c41-97df-cfc03c99d668
+  namespace: 3219e62e-f28c-4e9a-b62e-77aae69fb44b
+  labels:
+    app: solr-3ff6687b-fc8c-4c41-97df-cfc03c99d668
+spec:
+  selector:
+    app: solr-3ff6687b-fc8c-4c41-97df-cfc03c99d668
+  ports:
+    - port: 80
+      targetPort: 8983
+      protocol: TCP
+  type: ClusterIP
