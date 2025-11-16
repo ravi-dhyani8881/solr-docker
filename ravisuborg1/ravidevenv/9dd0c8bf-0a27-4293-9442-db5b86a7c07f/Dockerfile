@@ -12,26 +12,32 @@ COPY --chown=solr:solr organization /var/solr/data/organization
 RUN mkdir -p /var/solr/move/organization
 COPY --chown=solr:solr subOrganization /var/solr/data/subOrganization
 RUN mkdir -p /var/solr/move/subOrganization
+COPY --chown=solr:solr userOrg /var/solr/data/userOrg
+RUN mkdir -p /var/solr/move/userOrg
+COPY --chown=solr:solr invitation /var/solr/data/invitation
+RUN mkdir -p /var/solr/move/invitation
 COPY --chown=solr:solr environment /var/solr/data/environment
 RUN mkdir -p /var/solr/move/environment
-COPY --chown=solr:solr graph /var/solr/data/graph
-RUN mkdir -p /var/solr/move/graph
-COPY --chown=solr:solr publishGraph /var/solr/data/publishGraph
-RUN mkdir -p /var/solr/move/publishGraph
-COPY --chown=solr:solr publishRest /var/solr/data/publishRest
-RUN mkdir -p /var/solr/move/publishRest
+COPY --chown=solr:solr project /var/solr/data/project
+RUN mkdir -p /var/solr/move/project
+COPY --chown=solr:solr version /var/solr/data/version
+RUN mkdir -p /var/solr/move/version
+COPY --chown=solr:solr configuration /var/solr/data/configuration
+RUN mkdir -p /var/solr/move/configuration
+COPY --chown=solr:solr deploymentConfiguration /var/solr/data/deploymentConfiguration
+RUN mkdir -p /var/solr/move/deploymentConfiguration
+COPY --chown=solr:solr deployment /var/solr/data/deployment
+RUN mkdir -p /var/solr/move/deployment
+COPY --chown=solr:solr publishLog /var/solr/data/publishLog
+RUN mkdir -p /var/solr/move/publishLog
 COPY --chown=solr:solr apiKey /var/solr/data/apiKey
 RUN mkdir -p /var/solr/move/apiKey
 COPY --chown=solr:solr userSetting /var/solr/data/userSetting
 RUN mkdir -p /var/solr/move/userSetting
-COPY --chown=solr:solr Configuration /var/solr/data/Configuration
-RUN mkdir -p /var/solr/move/Configuration
-COPY --chown=solr:solr graphVersions /var/solr/data/graphVersions
-RUN mkdir -p /var/solr/move/graphVersions
-COPY --chown=solr:solr graphDeployments /var/solr/data/graphDeployments
-RUN mkdir -p /var/solr/move/graphDeployments
-COPY --chown=solr:solr deploymentConfiguration /var/solr/data/deploymentConfiguration
-RUN mkdir -p /var/solr/move/deploymentConfiguration
+COPY --chown=solr:solr chatHistory /var/solr/data/chatHistory
+RUN mkdir -p /var/solr/move/chatHistory
+COPY --chown=solr:solr earlyAccess /var/solr/data/earlyAccess
+RUN mkdir -p /var/solr/move/earlyAccess
     
     RUN chmod -R 0777 /var/solr/data && \
     chmod -R 0777 /var/solr/move && \

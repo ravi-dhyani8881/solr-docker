@@ -64,9 +64,11 @@
 
   <field name="status" type="string" indexed="true" stored="true"/>
 
-  <field name="addedDate" type="string" indexed="true" stored="true"/>
+  <field name="projectId" type="string" indexed="true" stored="true"/>
 
-  <field name="lastUpdate" type="string" indexed="true" stored="true"/>
+    <field name="createdAt" type="pdate" indexed="true" stored="true" default="NOW"/>
+
+    <field name="updatedAt" type="pdate" indexed="true" stored="true"/>
 
 
   <field name="_version_" type="plong" indexed="true" stored="true"/>

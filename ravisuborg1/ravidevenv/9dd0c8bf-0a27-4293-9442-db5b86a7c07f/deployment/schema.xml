@@ -58,13 +58,15 @@
 
 
 
-  <field name="orgId" type="string" indexed="true" stored="true"/>
+  <field name="projectId" type="string" indexed="true" stored="true"/>
 
-  <field name="subOrgId" type="string" indexed="true" stored="true"/>
+  <field name="versionId" type="string" indexed="true" stored="true"/>
 
-  <field name="environmentId" type="string" indexed="true" stored="true"/>
+  <field name="deploymentConfigurationId" type="string" indexed="true" stored="true"/>
 
-  <field name="userId" type="string" indexed="true" stored="true"/>
+  <field name="deployedBy" type="string" indexed="true" stored="true"/>
+
+  <field name="status" type="string" indexed="true" stored="true"/>
 
     <field name="createdAt" type="pdate" indexed="true" stored="true" default="NOW"/>
 

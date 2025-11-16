@@ -58,13 +58,9 @@
 
 
 
-  <field name="orgId" type="string" indexed="true" stored="true"/>
-
-  <field name="subOrgId" type="string" indexed="true" stored="true"/>
-
-  <field name="environmentId" type="string" indexed="true" stored="true"/>
-
   <field name="userId" type="string" indexed="true" stored="true"/>
+
+  <field name="orgId" type="string" indexed="true" stored="true"/>
 
     <field name="createdAt" type="pdate" indexed="true" stored="true" default="NOW"/>
 

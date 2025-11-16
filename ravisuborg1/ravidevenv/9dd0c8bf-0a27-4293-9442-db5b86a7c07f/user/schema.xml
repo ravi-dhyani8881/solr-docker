@@ -58,15 +58,23 @@
 
 
 
-  <field name="Name" type="string" indexed="true" stored="true"/>
+  <field name="email" type="string" indexed="true" stored="true"/>
+
+  <field name="firstName" type="string" indexed="true" stored="true"/>
+
+  <field name="middleName" type="string" indexed="true" stored="true"/>
+
+  <field name="lastName" type="string" indexed="true" stored="true"/>
 
   <field name="address" type="string" indexed="true" stored="true"/>
 
-  <field name="password" type="string" indexed="true" stored="true"/>
+  <field name="company" type="string" indexed="true" stored="true"/>
 
-  <field name="dateOfBirth" type="pdate" indexed="true" stored="true"/>
+  <field name="role" type="string" indexed="true" stored="true"/>
 
-  <field name="orgID" type="string" indexed="true" stored="true"/>
+  <field name="passwordHash" type="string" indexed="true" stored="true"/>
+
+  <field name="passwordSalt" type="string" indexed="true" stored="true"/>
 
     <field name="createdAt" type="pdate" indexed="true" stored="true" default="NOW"/>
 

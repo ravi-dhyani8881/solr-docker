@@ -58,13 +58,25 @@
 
 
 
-  <field name="orgId" type="string" indexed="true" stored="true"/>
+  <field name="projectId" type="string" indexed="true" stored="true"/>
 
-  <field name="subOrgId" type="string" indexed="true" stored="true"/>
+  <field name="name" type="string" indexed="true" stored="true"/>
 
-  <field name="environmentId" type="string" indexed="true" stored="true"/>
+  <field name="description" type="string" indexed="true" stored="true"/>
 
-  <field name="userId" type="string" indexed="true" stored="true"/>
+  <field name="schemaJson" type="string" indexed="true" stored="true"/>
+
+  <field name="status" type="pint" indexed="true" stored="true"/>
+
+  <field name="notes" type="string" indexed="true" stored="true"/>
+
+  <field name="domain" type="string" indexed="true" stored="true"/>
+
+  <field name="graphQlUrl" type="string" indexed="true" stored="true"/>
+
+  <field name="restUrl" type="string" indexed="true" stored="true"/>
+
+  <field name="createdBy" type="string" indexed="true" stored="true"/>
 
     <field name="createdAt" type="pdate" indexed="true" stored="true" default="NOW"/>
 
