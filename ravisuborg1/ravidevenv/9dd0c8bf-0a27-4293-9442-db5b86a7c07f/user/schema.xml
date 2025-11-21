@@ -80,6 +80,8 @@
 
     <field name="updatedAt" type="pdate" indexed="true" stored="true"/>
 
+  <field name="userActivationKey" type="string" indexed="true" stored="true"/>
+
 
   <field name="_version_" type="plong" indexed="true" stored="true"/>
 
