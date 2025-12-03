@@ -60,6 +60,8 @@
 
   <field name="email" type="string" indexed="true" stored="true"/>
 
+  <field name="userStatus" type="string" indexed="true" stored="true"/>
+
   <field name="firstName" type="string" indexed="true" stored="true"/>
 
   <field name="middleName" type="string" indexed="true" stored="true"/>
