@@ -1,10 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: solr-ingress-
+  name: solr-ingress-4bd7ef21-deca-430e-81c4-f8ae3f003bb6
   namespace: 85c8a741-63c7-438b-8abe-9fe23efa41e5
   labels:
-    app: solr-
+    app: solr-4bd7ef21-deca-430e-81c4-f8ae3f003bb6
 spec:
   ingressClassName: nginx
   rules:
@@ -15,6 +15,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: solr-service-
+                name: solr-service-4bd7ef21-deca-430e-81c4-f8ae3f003bb6
                 port:
                   number: 80
