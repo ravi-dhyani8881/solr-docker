@@ -74,7 +74,7 @@
 
   <field name="role" type="string" indexed="true" stored="true"/>
 
-  <field name="passwordHash" type="string" indexed="true" stored="true"/>
+  <field name="password" type="string" indexed="true" stored="true"/>
 
   <field name="passwordSalt" type="string" indexed="true" stored="true"/>
 
