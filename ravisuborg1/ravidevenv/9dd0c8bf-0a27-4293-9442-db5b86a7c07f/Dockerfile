@@ -38,8 +38,8 @@ COPY --chown=solr:solr chatHistory /var/solr/data/chatHistory
 RUN mkdir -p /var/solr/move/chatHistory
 COPY --chown=solr:solr earlyAccess /var/solr/data/earlyAccess
 RUN mkdir -p /var/solr/move/earlyAccess
-COPY --chown=solr:solr campaign_submissions /var/solr/data/campaign_submissions
-RUN mkdir -p /var/solr/move/campaign_submissions
+COPY --chown=solr:solr campaignSubmissions /var/solr/data/campaignSubmissions
+RUN mkdir -p /var/solr/move/campaignSubmissions
 COPY --chown=solr:solr campaigns /var/solr/data/campaigns
 RUN mkdir -p /var/solr/move/campaigns
     
