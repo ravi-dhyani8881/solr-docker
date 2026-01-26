@@ -60,7 +60,11 @@
 
   <field name="userId" type="string" indexed="true" stored="true"/>
 
-  <field name="messages" type="string" indexed="true" stored="true"/>
+  <field name="projectId" type="string" indexed="true" stored="true"/>
+
+  <field name="role" type="string" indexed="true" stored="true"/>
+
+  <field name="message" type="string" indexed="true" stored="true"/>
 
     <field name="createdAt" type="pdate" indexed="true" stored="true" default="NOW"/>
 
