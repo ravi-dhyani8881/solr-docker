@@ -58,7 +58,7 @@
 
 
 
-  <field name="SupplyId" type="pint" indexed="true" stored="true"/>
+  <field name="SupplyId" type="string" indexed="true" stored="true"/>
 
   <field name="supplierId" type="string" indexed="true" stored="true"/>
 
