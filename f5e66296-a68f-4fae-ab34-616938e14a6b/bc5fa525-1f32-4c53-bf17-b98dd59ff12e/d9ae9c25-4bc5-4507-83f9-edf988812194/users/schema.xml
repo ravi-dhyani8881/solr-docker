@@ -70,6 +70,16 @@
 
   <field name="userStatus" type="string" indexed="true" stored="true"/>
 
+  <field name="middleName" type="string" indexed="true" stored="true"/>
+
+  <field name="firstName" type="string" indexed="true" stored="true"/>
+
+  <field name="lastName" type="string" indexed="true" stored="true"/>
+
+  <field name="address" type="string" indexed="true" stored="true"/>
+
+  <field name="role" type="string" indexed="true" stored="true"/>
+
 
   <field name="_version_" type="plong" indexed="true" stored="true"/>
 
