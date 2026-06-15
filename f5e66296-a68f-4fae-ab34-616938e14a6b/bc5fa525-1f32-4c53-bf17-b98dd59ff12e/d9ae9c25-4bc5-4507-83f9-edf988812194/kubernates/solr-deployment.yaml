@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: solr-deployment-25f50d09-3092-470a-9597-5203f35d686a
+  name: solr-deployment-4b7d3b14-fc04-400d-b866-17c9a18ebe00
   namespace: 2e49f282-85d5-4866-af7d-8133a75e6769
   labels:
-    app: solr-25f50d09-3092-470a-9597-5203f35d686a
+    app: solr-4b7d3b14-fc04-400d-b866-17c9a18ebe00
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: solr-25f50d09-3092-470a-9597-5203f35d686a
+      app: solr-4b7d3b14-fc04-400d-b866-17c9a18ebe00
   template:
     metadata:
       labels:
-        app: solr-25f50d09-3092-470a-9597-5203f35d686a
+        app: solr-4b7d3b14-fc04-400d-b866-17c9a18ebe00
     spec:
       initContainers:
         - name: fix-permissions
-          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12e-d9ae9c25-4bc5-4507-83f9-edf988812194:21.0.0
+          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12e-d9ae9c25-4bc5-4507-83f9-edf988812194:22.0.0
           command: 
             - sh
             - '-c'
             - |
               echo "Copying initial Solr data from image to PVC..."
-              mkdir -p /data/d9ae9c25-4bc5-4507-83f9-edf988812194/25f50d09-3092-470a-9597-5203f35d686a /data/d9ae9c25-4bc5-4507-83f9-edf988812194/data
-              cp -R /var/solr/data/* /data/d9ae9c25-4bc5-4507-83f9-edf988812194/25f50d09-3092-470a-9597-5203f35d686a || true
+              mkdir -p /data/d9ae9c25-4bc5-4507-83f9-edf988812194/4b7d3b14-fc04-400d-b866-17c9a18ebe00 /data/d9ae9c25-4bc5-4507-83f9-edf988812194/data
+              cp -R /var/solr/data/* /data/d9ae9c25-4bc5-4507-83f9-edf988812194/4b7d3b14-fc04-400d-b866-17c9a18ebe00 || true
               cp -R /var/solr/move/* /data/d9ae9c25-4bc5-4507-83f9-edf988812194/data || true
               chown -R 8983:8983 /data
               chmod -R 777 /data
@@ -36,8 +36,8 @@ spec:
             runAsUser: 0 # Run as root to change ownership
 
       containers:
-        - name: solr-25f50d09-3092-470a-9597-5203f35d686a
-          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12e-d9ae9c25-4bc5-4507-83f9-edf988812194:21.0.0
+        - name: solr-4b7d3b14-fc04-400d-b866-17c9a18ebe00
+          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12e-d9ae9c25-4bc5-4507-83f9-edf988812194:22.0.0
           ports:
             - containerPort: 8983
           env:
