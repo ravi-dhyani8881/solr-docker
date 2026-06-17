@@ -3,7 +3,7 @@ FROM solr:9.8.1
 
 USER root
 # Set your custom Solr home
-ENV SOLR_HOME=/data/baaa5a57-1f2e-48bd-95a4-9103c847a98a/c254b1f1-5793-4526-a83b-607467bde8c4
+ENV SOLR_HOME=/data/baaa5a57-1f2e-48bd-95a4-9103c847a98a/66948276-7d92-476d-8cf8-1ebc5c8aafbe
 
 COPY --chown=solr:solr scripts /opt/docker-solr/scripts
 COPY --chown=solr:solr orders /var/solr/data/orders

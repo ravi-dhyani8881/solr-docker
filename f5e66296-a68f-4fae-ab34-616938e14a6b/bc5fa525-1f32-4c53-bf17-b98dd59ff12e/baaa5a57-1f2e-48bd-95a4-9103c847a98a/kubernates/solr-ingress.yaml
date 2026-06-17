@@ -1,20 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: solr-ingress-c254b1f1-5793-4526-a83b-607467bde8c4
+  name: solr-ingress-66948276-7d92-476d-8cf8-1ebc5c8aafbe
   namespace: 2e49f282-85d5-4866-af7d-8133a75e6769
   labels:
-    app: solr-c254b1f1-5793-4526-a83b-607467bde8c4
+    app: solr-66948276-7d92-476d-8cf8-1ebc5c8aafbe
 spec:
   ingressClassName: nginx
   rules:
-    - host: park-3m7e0s.2siice.us-east-2.febe.kbs
+    - host: park-gdyi51.1m3tgd.us-east-2.febe.kbs
       http:
         paths:
           - path: /solr/
             pathType: Prefix
             backend:
               service:
-                name: solr-service-c254b1f1-5793-4526-a83b-607467bde8c4
+                name: solr-service-66948276-7d92-476d-8cf8-1ebc5c8aafbe
                 port:
                   number: 80
