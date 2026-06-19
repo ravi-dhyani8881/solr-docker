@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: solr-deployment-306bbf55-4579-44a3-8c31-d7b296a25bc9
+  name: solr-deployment-e90ea533-89c5-4761-af3b-4b2473c47e85
   namespace: 2e49f282-85d5-4866-af7d-8133a75e6769
   labels:
-    app: solr-306bbf55-4579-44a3-8c31-d7b296a25bc9
+    app: solr-e90ea533-89c5-4761-af3b-4b2473c47e85
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: solr-306bbf55-4579-44a3-8c31-d7b296a25bc9
+      app: solr-e90ea533-89c5-4761-af3b-4b2473c47e85
   template:
     metadata:
       labels:
-        app: solr-306bbf55-4579-44a3-8c31-d7b296a25bc9
+        app: solr-e90ea533-89c5-4761-af3b-4b2473c47e85
     spec:
       initContainers:
         - name: fix-permissions
-          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12e-9e747131-cfc7-4b99-bf38-6fccfc36af88:2.0.0
+          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12e-9e747131-cfc7-4b99-bf38-6fccfc36af88:3.0.0
           command: 
             - sh
             - '-c'
             - |
               echo "Copying initial Solr data from image to PVC..."
-              mkdir -p /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/306bbf55-4579-44a3-8c31-d7b296a25bc9 /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/data
-              cp -R /var/solr/data/* /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/306bbf55-4579-44a3-8c31-d7b296a25bc9 || true
+              mkdir -p /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/e90ea533-89c5-4761-af3b-4b2473c47e85 /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/data
+              cp -R /var/solr/data/* /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/e90ea533-89c5-4761-af3b-4b2473c47e85 || true
               cp -R /var/solr/move/* /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/data || true
               chown -R 8983:8983 /data
               chmod -R 777 /data
@@ -36,8 +36,8 @@ spec:
             runAsUser: 0 # Run as root to change ownership
 
       containers:
-        - name: solr-306bbf55-4579-44a3-8c31-d7b296a25bc9
-          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12e-9e747131-cfc7-4b99-bf38-6fccfc36af88:2.0.0
+        - name: solr-e90ea533-89c5-4761-af3b-4b2473c47e85
+          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12e-9e747131-cfc7-4b99-bf38-6fccfc36af88:3.0.0
           ports:
             - containerPort: 8983
           env:
