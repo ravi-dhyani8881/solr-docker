@@ -3,23 +3,17 @@ FROM solr:9.8.1
 
 USER root
 # Set your custom Solr home
-ENV SOLR_HOME=/data/9e747131-cfc7-4b99-bf38-6fccfc36af88/e90ea533-89c5-4761-af3b-4b2473c47e85
+ENV SOLR_HOME=/data/9e747131-cfc7-4b99-bf38-6fccfc36af88/4ec9e601-c391-41e7-822b-0abbfbbdb77f
 
 COPY --chown=solr:solr scripts /opt/docker-solr/scripts
-COPY --chown=solr:solr content /var/solr/data/content
-RUN mkdir -p /var/solr/move/content
-COPY --chown=solr:solr user /var/solr/data/user
-RUN mkdir -p /var/solr/move/user
-COPY --chown=solr:solr review /var/solr/data/review
-RUN mkdir -p /var/solr/move/review
-COPY --chown=solr:solr like /var/solr/data/like
-RUN mkdir -p /var/solr/move/like
-COPY --chown=solr:solr helpfull /var/solr/data/helpfull
-RUN mkdir -p /var/solr/move/helpfull
-COPY --chown=solr:solr dislike /var/solr/data/dislike
-RUN mkdir -p /var/solr/move/dislike
-COPY --chown=solr:solr reply /var/solr/data/reply
-RUN mkdir -p /var/solr/move/reply
+COPY --chown=solr:solr users /var/solr/data/users
+RUN mkdir -p /var/solr/move/users
+COPY --chown=solr:solr products /var/solr/data/products
+RUN mkdir -p /var/solr/move/products
+COPY --chown=solr:solr reviews /var/solr/data/reviews
+RUN mkdir -p /var/solr/move/reviews
+COPY --chown=solr:solr review_responses /var/solr/data/review_responses
+RUN mkdir -p /var/solr/move/review_responses
     
     RUN chmod -R 0777 /var/solr/data && \
     chmod -R 0777 /var/solr/move && \
