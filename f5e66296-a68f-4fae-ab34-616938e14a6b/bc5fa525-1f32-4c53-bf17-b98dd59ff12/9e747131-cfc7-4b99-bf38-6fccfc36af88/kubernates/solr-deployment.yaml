@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solr-deployment-80eae2bb-89fa-42fc-a12b-99571b9be94d
+  namespace: 2e49f282-85d5-4866-af7d-8133a75e6769
+  labels:
+    app: solr-80eae2bb-89fa-42fc-a12b-99571b9be94d
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solr-80eae2bb-89fa-42fc-a12b-99571b9be94d
+  template:
+    metadata:
+      labels:
+        app: solr-80eae2bb-89fa-42fc-a12b-99571b9be94d
+    spec:
+      initContainers:
+        - name: fix-permissions
+          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12-9e747131-cfc7-4b99-bf38-6fccfc36af88:19.0.0
+          command: 
+            - sh
+            - '-c'
+            - |
+              echo "Copying initial Solr data from image to PVC..."
+              mkdir -p /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/80eae2bb-89fa-42fc-a12b-99571b9be94d /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/data
+              cp -R /var/solr/data/* /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/80eae2bb-89fa-42fc-a12b-99571b9be94d || true
+              cp -R /var/solr/move/* /data/9e747131-cfc7-4b99-bf38-6fccfc36af88/data || true
+              chown -R 8983:8983 /data
+              chmod -R 777 /data
+              echo "Done copying Solr cores."
+          volumeMounts:
+            - name: solr-data-volume
+              mountPath: /data
+          securityContext:
+            runAsUser: 0 # Run as root to change ownership
+
+      containers:
+        - name: solr-80eae2bb-89fa-42fc-a12b-99571b9be94d
+          image: ravi8881/2e49f282-85d5-4866-af7d-8133a75e6769-f5e66296-a68f-4fae-ab34-616938e14a6b-bc5fa525-1f32-4c53-bf17-b98dd59ff12-9e747131-cfc7-4b99-bf38-6fccfc36af88:19.0.0
+          ports:
+            - containerPort: 8983
+          env:
+            - name: SOLR_OPTS
+              value: "-Dsolr.allowPaths=/data"  
+          volumeMounts:
+            - name: solr-data-volume
+              mountPath: /data # This path is where Solr looks for its cores
+      volumes:
+        - name: solr-data-volume
+          persistentVolumeClaim:
+            claimName: 9e747131-cfc7-4b99-bf38-6fccfc36af88 # This name must match the PVC metadata.name
+      securityContext:
+        runAsUser: 8983
+        runAsGroup: 8983
+        fsGroup: 8983
