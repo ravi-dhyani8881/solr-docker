@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: solr-service-fe2dde9c-6566-47b1-a370-6a7bd082aa1f
+  name: solr-service-5a387236-59a7-4f33-bba3-a2c3572e686c
   namespace: 85c8a741-63c7-438b-8abe-9fe23efa41e5
   labels:
-    app: solr-fe2dde9c-6566-47b1-a370-6a7bd082aa1f
+    app: solr-5a387236-59a7-4f33-bba3-a2c3572e686c
 spec:
   selector:
-    app: solr-fe2dde9c-6566-47b1-a370-6a7bd082aa1f
+    app: solr-5a387236-59a7-4f33-bba3-a2c3572e686c
   ports:
     - port: 80
       targetPort: 8983

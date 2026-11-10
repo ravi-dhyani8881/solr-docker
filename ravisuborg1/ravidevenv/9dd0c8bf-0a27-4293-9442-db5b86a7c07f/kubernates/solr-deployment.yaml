@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: solr-deployment-fe2dde9c-6566-47b1-a370-6a7bd082aa1f
+  name: solr-deployment-5a387236-59a7-4f33-bba3-a2c3572e686c
   namespace: 85c8a741-63c7-438b-8abe-9fe23efa41e5
   labels:
-    app: solr-fe2dde9c-6566-47b1-a370-6a7bd082aa1f
+    app: solr-5a387236-59a7-4f33-bba3-a2c3572e686c
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: solr-fe2dde9c-6566-47b1-a370-6a7bd082aa1f
+      app: solr-5a387236-59a7-4f33-bba3-a2c3572e686c
   template:
     metadata:
       labels:
-        app: solr-fe2dde9c-6566-47b1-a370-6a7bd082aa1f
+        app: solr-5a387236-59a7-4f33-bba3-a2c3572e686c
     spec:
       initContainers:
         - name: fix-permissions
@@ -23,8 +23,8 @@ spec:
             - '-c'
             - |
               echo "Copying initial Solr data from image to PVC..."
-              mkdir -p /data/9dd0c8bf-0a27-4293-9442-db5b86a7c07f/fe2dde9c-6566-47b1-a370-6a7bd082aa1f /data/9dd0c8bf-0a27-4293-9442-db5b86a7c07f/data
-              cp -R /var/solr/data/* /data/9dd0c8bf-0a27-4293-9442-db5b86a7c07f/fe2dde9c-6566-47b1-a370-6a7bd082aa1f || true
+              mkdir -p /data/9dd0c8bf-0a27-4293-9442-db5b86a7c07f/5a387236-59a7-4f33-bba3-a2c3572e686c /data/9dd0c8bf-0a27-4293-9442-db5b86a7c07f/data
+              cp -R /var/solr/data/* /data/9dd0c8bf-0a27-4293-9442-db5b86a7c07f/5a387236-59a7-4f33-bba3-a2c3572e686c || true
               cp -R /var/solr/move/* /data/9dd0c8bf-0a27-4293-9442-db5b86a7c07f/data || true
               chown -R 8983:8983 /data
               chmod -R 777 /data
@@ -36,7 +36,7 @@ spec:
             runAsUser: 0 # Run as root to change ownership
 
       containers:
-        - name: solr-fe2dde9c-6566-47b1-a370-6a7bd082aa1f
+        - name: solr-5a387236-59a7-4f33-bba3-a2c3572e686c
           image: ravi8881/85c8a741-63c7-438b-8abe-9fe23efa41e5-ravisuborg1-ravidevenv-9dd0c8bf-0a27-4293-9442-db5b86a7c07f:19.0.0
           ports:
             - containerPort: 8983
