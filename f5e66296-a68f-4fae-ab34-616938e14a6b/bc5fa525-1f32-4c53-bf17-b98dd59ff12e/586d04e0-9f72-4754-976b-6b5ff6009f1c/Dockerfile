@@ -3,7 +3,7 @@ FROM solr:9.8.1
 
 USER root
 # Set your custom Solr home
-ENV SOLR_HOME=/data/586d04e0-9f72-4754-976b-6b5ff6009f1c/ff66af46-21e2-423f-b6aa-95e5c92ac1b2
+ENV SOLR_HOME=/data/586d04e0-9f72-4754-976b-6b5ff6009f1c/073b6124-e8f2-41df-b9a3-4145c33b0e62
 
 COPY --chown=solr:solr scripts /opt/docker-solr/scripts
 COPY --chown=solr:solr bankrule /var/solr/data/bankrule
