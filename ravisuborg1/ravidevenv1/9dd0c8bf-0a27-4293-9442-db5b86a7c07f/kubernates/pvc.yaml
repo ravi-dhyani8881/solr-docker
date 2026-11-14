@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: 9dd0c8bf-0a27-4293-9442-db5b86a7c07f
+  namespace: 85c8a741-63c7-438b-8abe-9fe23efa41e5
+spec:
+  accessModes:
+    - ReadWriteOnce # Must match the access mode of the PV
+  resources:
+    requests:
+      storage: 5Gi # Requesting 5Gi of storage
